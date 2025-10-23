@@ -50,10 +50,8 @@ A real-time object detection and tracking web application built with Streamlit a
 ## Setup Information
 
 ### System Dependencies
-- libGL (OpenGL libraries for cv2)
-- freeglut (OpenGL utility toolkit)
-- gtk2 (GTK+ GUI toolkit)
-- mesa (3D graphics library)
+- Python 3.11 (installed via Replit modules)
+- All Python packages installed via pip with CPU-only PyTorch for space efficiency
 
 ### Development Server
 - **Host**: 0.0.0.0
@@ -66,13 +64,16 @@ A real-time object detection and tracking web application built with Streamlit a
 - **Run Command**: `streamlit run app.py --server.port=5000 --server.address=0.0.0.0`
 
 ## Recent Changes
-- **2025-10-23**: Initial Replit environment setup
-  - Installed Python 3.11 and all dependencies
-  - Configured Streamlit to bind to 0.0.0.0:5000
-  - Fixed OpenGL library dependencies for cv2
-  - Set up workflow for automatic server restart
-  - Configured deployment for autoscale
-  - Verified app functionality with screenshot
+- **2025-10-23**: Replit environment setup completed
+  - Installed Python 3.11 module
+  - Installed CPU-only PyTorch (2.3.1+cpu) to save disk space (~190MB vs ~900MB CUDA version)
+  - Installed all required dependencies: streamlit, ultralytics, opencv-python-headless, yt-dlp, lap
+  - Configured Streamlit to bind to 0.0.0.0:5000 with CORS and XSRF protection disabled for Replit proxy
+  - Created .streamlit/config.toml with proper server settings
+  - Set up workflow "Streamlit App" to run on port 5000
+  - Configured deployment for autoscale deployment type
+  - Created .gitignore for Python project
+  - App is running successfully and serving HTTP responses
 
 ## Usage
 The application automatically starts on port 5000. Access it through the Replit webview to:
