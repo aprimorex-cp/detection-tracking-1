@@ -31,6 +31,8 @@ VIDEOS_DICT = {
     'video_1': VIDEO_DIR / 'video_1.mp4',
     'video_2': VIDEO_DIR / 'video_2.mp4',
     'video_3': VIDEO_DIR / 'video_3.mp4',
+    'video_4': VIDEO_DIR / 'video_4.mp4',
+    'video_5': VIDEO_DIR / 'video_5.mp4',
 }
 
 # ML Model config
