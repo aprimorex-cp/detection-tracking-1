@@ -2,6 +2,7 @@ from ultralytics import YOLO
 import streamlit as st
 import cv2
 import yt_dlp
+import torch
 import settings
 
 
@@ -15,7 +16,27 @@ def load_model(model_path):
     Returns:
         A YOLO object detection model.
     """
-    model = YOLO(model_path)
+    # For PyTorch 2.6+, we need to load with weights_only=False
+    # This is safe because we trust the YOLOv8 model source
+    # The ultralytics library handles the torch.load internally,
+    # so we need to monkey-patch it temporarily
+    import functools
+    original_load = torch.load
+
+    # Create a wrapper that uses weights_only=False
+    def patched_load(*args, **kwargs):
+        kwargs['weights_only'] = False
+        return original_load(*args, **kwargs)
+
+    # Temporarily replace torch.load
+    torch.load = patched_load
+
+    try:
+        model = YOLO(model_path)
+    finally:
+        # Restore original torch.load
+        torch.load = original_load
+
     return model
 
 
